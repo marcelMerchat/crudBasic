@@ -2,9 +2,6 @@
 
 <!-- Custom styles for this template -->
 
-<link rel="stylesheet"
-    href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
-
 <!-- define('rootpath', __DIR__);
 echo '<link rel="stylesheet" type="text/css" href="'.rootpath.'/blocks2.css">';
 -->

@@ -4,7 +4,6 @@ body {
     background-color: #e4e4e3;
 }
 div {
-    display: block;
     position: relative;
     box-sizing: border-box;
 }
@@ -31,7 +30,7 @@ h2 {
     padding-top: 1px;
 
     padding-bottom: 1px;
-    padding-left: 20px;
+    padding-left: 2px;
     padding-right: 5px;
 }
 h3 {
@@ -453,7 +452,6 @@ a:hover {
 }
 
 #two {
-    display: block;
     left: 30%;
     border: 0px orange solid;
     position: relative;
@@ -490,83 +488,70 @@ a:hover {
     display: block;
 
 }
-#position5 {
-
-}
-#position6 {
-
-}
-#position7 {
-
-}
-#position8 {
-
 #pre-existing-conditions {
 
 }
 
 table {
-      /* border-collapse: collapse; */
+      border-collapse: collapse;
       cell-spacing: 0px;
-      padding-left: 2px;
-      padding-right 2px;
-      padding-top: 2px;
-      padding-bottom: 2px;
+      padding-left: 10px;
+      padding-right 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       margin: 1px;
-      border: 1px solid #008800;
+      border: 2px solid #008800;
       background-color: #CCEEFF;
 }
 
 .tablePosition {
-      /* border-collapse: collapse; */
+      border-collapse: collapse; 
       cell-spacing: 0px;
       padding-left: 5px;
       padding-right 5px;
       padding-top: 2px;
       padding-bottom: 2px;
       margin: auto;
-      border: 0px solid #008800;
+      border: 2px solid #008800;
       background-color: #554400;
 }
 
 th {
     font-color: #008800;
-    font-size: 1.3em;
-    padding-left: 5px;
-    padding-right: 5px;
+    font-size: 1.5em;
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 3px;
     padding-bottom: 3px;
     background-color: #BBDDEE;
+    border-spacing: 0px;
     cell-spacing: 0px;
-    margin: 2px;
-    border: 0px solid #008800;
+    border: 2px solid #008800;
 }
 
 td {
-    font-size: 1.1em;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    font-size: 1.3em;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     cell-spacing: 0px;
-    border: 0px solid #008800;
-    background-color: #EEEEFF;
-    margin: 1px;
+    border: 1px solid #008800;
+    border-spacing: 0px;
+    background-color: #EEEEFF;    
 }
 .td-narrowcol {
     font-size: 1.1em;
     width: 180px;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     cell-spacing: 0px;
-    border: 0px solid #008800;
+    border: 2px solid #008800;
     background-color: #EEEEFF;
-    margin: 1px;
 }
 tr {
-    margin: 1px;
     line-height: 2.4em;
 }
 ul {

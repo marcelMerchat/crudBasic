@@ -3,15 +3,14 @@ require_once "pdo.php";
 require_once "util.php";
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Marcel Merchat's Resume Registry</title>
   <?php
-    require_once 'headindex.php';
+    require_once 'head.php';
   ?>
- 
-<link type="text/css" rel="stylesheet" href="blocks2.css">
 </head>
 <body>
 <div id="two">
@@ -26,7 +25,7 @@ if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
     $row =  $stmt1->fetch(PDO::FETCH_ASSOC);
     $row_count = array_values($row)[0];
     if($row_count >= 1) {
-        echo('<table border=2>');
+        echo('<table border="1">');
         echo "<tr><th>";
         echo('Name');
         echo("</th><th>");
@@ -68,13 +67,12 @@ if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
       echo('</p>');
 } else {
       echo('<br>');
-      echo '<h3>Marcel Merchat\'s Resume Registry</h3>';
+      echo '<h2>Marcel Merchat\'s Resume Registry</h2>';
       echo('<br>');
-      echo('<h3>');
+      echo('<p>');
       echo('<a href="login.php">Please log in</a>');
-      echo('</h3>');
+      echo('</p>');
 }
 ?>
 </div>
 </body>
-</html>
