@@ -1,15 +1,10 @@
 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Custom styles for this template -->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-<link rel="stylesheet"
-    href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
-
-<!-- define('rootpath', __DIR__);
-echo '<link rel="stylesheet" type="text/css" href="'.rootpath.'/blocks2.css">';
--->
-<br>
-
+<!-- Latest compiled and minified jquery -->
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -20,5 +15,9 @@ echo '<link rel="stylesheet" type="text/css" href="'.rootpath.'/blocks2.css">';
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
   crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="blocks2.css">
+<!-- Custom styles for this template -->
+<link rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
 
+
+<link rel="stylesheet" type="text/css" href="blocks2.css">

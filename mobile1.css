@@ -9,12 +9,13 @@ div {
 }
 .div {
     display: block;
+    font-size: 1.1em;
     font-weight: bold;
     position: absolute;
     border: 10px;
 }
 h1 {
-    color: #008800;
+    font-color: #008800;
     margin-top: 5px;
     margin-bottom: 1px;
     padding-top: 2px;
@@ -23,16 +24,17 @@ h1 {
     padding-right: 5px;
 }
 h2 {
-    color: #008800;
+    font-color: #008800;
     font-size: 1.4em;
     margin-top: 30px;
     padding-top: 1px;
+
     padding-bottom: 1px;
     padding-left: 2px;
     padding-right: 5px;
 }
 h3 {
-    color: #008800;
+    font-color: #008800;
     margin-top: 20px;
     padding-top: 2px;
     padding-bottom: 10px;
@@ -454,11 +456,13 @@ a:hover {
     position: relative;
 }
 #two {
-    left: 25%;
-    border: 0px orange solid;
+    top: 3%;
+    left: 3%;
+    border: 1px #ccf solid;
     position: relative;
 }
 #position_fields {
+    /*top: 30%;*/
     display: block;
     position: relative;
 }
@@ -468,6 +472,7 @@ a:hover {
 }
 #position1 {
     display: block;
+    /*top: 5%;*/
 }
 #position2 {
     display: block;
@@ -480,10 +485,12 @@ a:hover {
 #position4 {
     margin: auto;
     display: block;
+
 }
 #pre-existing-conditions {
 
 }
+
 table {
       border-collapse: collapse;
       cell-spacing: 0px;

@@ -1,6 +1,7 @@
 <?php
 require_once "pdo.php";
 require_once "util.php";
+require_once 'detectmobile.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -8,18 +9,24 @@ session_start();
 <head>
   <title>Marcel Merchat's Resume Registry</title>
   <?php
-    require_once 'headindex.php';
-  ?>
- 
-<link type="text/css" rel="stylesheet" href="blocks2.css">
+      function isMobile() {
+          return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+      }
+      if(isMobile()==1) {
+          require_once 'mobile.php';
+      } else {
+          require_once 'headindex.php';
+      }
+?>
 </head>
 <body>
 <div id="two">
 <?php
 // logged-in case
+echo $_SERVER['HTTP_USER_AGENT'];
 if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
     echo('<br>');
-    echo '<h2>Profiles for '.$_SESSION['full_name'].'</h2>';
+    echo '<h1>Profiles for '.$_SESSION['full_name'].'</h1>';
     //echo('<br>');
     flashMessages();
     $stmt1 = $pdo->query("SELECT COUNT(*) FROM Profile");
@@ -61,18 +68,20 @@ if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
     }
       echo('<br>');
       echo('<p>');
-      echo('<a href="add.php">Add New Entry</a><br/>');
+      //echo('<a href="add.php">Add New Entry</a>');
       echo('</p>');
-      echo('<p>');
-      echo('<a href="logout.php">Logout</a>');
-      echo('</p>');
+      echo('<p class="big">');
+      echo '<span>';
+          echo '<a class="anchor-button" href="add.php">Add New Entry</a> <a' ;
+          echo ' class="anchor-button" href="logout.php">Logout</a>' ;
+      echo '</span></p>';
 } else {
       echo('<br>');
-      echo '<h3>Marcel Merchat\'s Resume Registry</h3>';
+      echo '<h2>Marcel Merchat\'s Resume Registry</h2>';
       echo('<br>');
-      echo('<h3>');
+      echo('<h2>');
       echo('<a href="login.php">Please log in</a>');
-      echo('</h3>');
+      echo('</h2>');
 }
 ?>
 </div>

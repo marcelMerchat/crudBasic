@@ -3,6 +3,8 @@ session_start();
 require_once 'pdo.php';
 require_once "bootstrap.php";
 require_once "util.php";
+require_once 'headindex.php';
+require_once 'detectmobile.php';
 
 if ( isset($_POST['cancel'] ) ) {
     header('Location: index.php');
@@ -91,7 +93,7 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
       <input class="password"  type="password" name="pass" value='<?= htmlentities("") ?>' id="id_1723">
       </p>
       <p class="big">
-            <input class="small-word-button" type="submit" onclick="return doValidate();" value="Log In">
+            <input class="big width-eight" type="submit" onclick="return doValidate();" value="Log In">
             <input class="button-cancel" type="submit" name="cancel" value="Cancel">
       </p>
   </form>

@@ -2,6 +2,7 @@
 // 'view.php'
 require_once "pdo.php";
 require_once "util.php";
+
 session_start();
 ?>
 

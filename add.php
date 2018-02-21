@@ -2,6 +2,8 @@
 // 'add.php'
 require_once "pdo.php";
 require_once "util.php";
+require_once 'headindex.php';
+require_once 'detectmobile.php';
 session_start();
 
 if ( ! isset($_SESSION['user_id']))  {
@@ -58,8 +60,15 @@ $pos = 1;
 <html>
 <head>
 <title>Marcel Merchat's Profile Entry</title>
+<link type="text/css" rel="stylesheet" href="blocks2.css">
 <?php
-  require_once 'head.php';
+    function isMobile() {
+        return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    }
+    if(isMobile()==1) {
+        require_once 'mobile.php';
+    }
+  //require_once 'head.php';
 ?>
 <script src="script.js"></script>
 </head>

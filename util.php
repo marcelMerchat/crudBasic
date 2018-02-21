@@ -3,11 +3,11 @@
 
 function flashMessages(){
     if ( isset($_SESSION['error']) ) {
-          echo '<p class="big" style="color:red">'.$_SESSION['error'].'</p>';
+          echo '<p class="big message" style="color:red">'.$_SESSION['error'].'</p>';
           unset($_SESSION['error']);
     }
     if ( isset($_SESSION['success']) ) {
-          echo '<p class="big" style="color:green">'.$_SESSION['success'].'</p>';
+          echo '<p class="big message" style="color:green">'.$_SESSION['success'].'</p>';
           unset($_SESSION['success']);
     }
   }

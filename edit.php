@@ -2,6 +2,8 @@
 // 'edit.php'
 require_once "pdo.php";
 require_once "util.php";
+require_once 'headindex.php';
+require_once 'detectmobile.php';
 session_start();
 
 // If the user is not logged-in
@@ -113,12 +115,13 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) &&
 </head>
 <body>
   <div id="two">
-          <h1>Editing profile: by <?= $_SESSION['full_name'] ?></h1>
+          <h2>Editing profile: by <?= $_SESSION['full_name'] ?></h2>
 <?php
           flashMessages();
           if(  $_SESSION['posCount'] === 9 ){
                 $_SESSION['error'] = 'The number of position entries is at the limit of nine.';
                 unset($_SESSION['error']);
+                echo '<br>';
           }
 ?>
    <form method="post">
@@ -133,7 +136,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) &&
           <textarea name="summary" rows="8" cols="80"  id="su"> <?= $sum ?> </textarea>
 <p>Add Education: <button class="button-plus" id="addEdu" >+</button></p>
 <div id="edu_fields">
-<?php
+<?
 $countEdu = 1;
     foreach($educations as $education){
             $_SESSION['education_count'] = $countEdu;
