@@ -1,6 +1,9 @@
 <?php
 // util.php utilities
 
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
 function flashMessages(){
     if ( isset($_SESSION['error']) ) {
           echo '<p class="big message" style="color:red">'.$_SESSION['error'].'</p>';

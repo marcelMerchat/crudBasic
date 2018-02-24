@@ -2,8 +2,6 @@
 // 'add.php'
 require_once "pdo.php";
 require_once "util.php";
-require_once 'headindex.php';
-require_once 'detectmobile.php';
 session_start();
 
 if ( ! isset($_SESSION['user_id']))  {
@@ -60,20 +58,22 @@ $pos = 1;
 <html>
 <head>
 <title>Marcel Merchat's Profile Entry</title>
-<link type="text/css" rel="stylesheet" href="blocks2.css">
 <?php
-    function isMobile() {
-        return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-    }
+    //function isMobile() {
+    //    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    //}
+    require_once 'jquery.php';
     if(isMobile()==1) {
         require_once 'mobile.php';
+    } else {
+      // Custom styles for this template
+      echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
     }
-  //require_once 'head.php';
 ?>
 <script src="script.js"></script>
 </head>
 <body>
-<div id="two">
+<div id="main">
 <?php
     if ( isset($_SESSION['name']) ) {
               echo ('<h2>Adding Profile for '.$_SESSION['full_name']);
@@ -84,14 +84,15 @@ $pos = 1;
 ?>
 <form method="post">
     <input type="hidden" name="user_id" value=$_SESSION['user_id']></p>
-    <p class="big">First Name: <input class="name-entry-box" type="text" name="first_name" value='<?= htmlentities("") ?>' id="fn"/></p>
-        <p class="big">Last Name: <input class="name-entry-box" type="text" name="last_name" value='<?= htmlentities("") ?>' id="ln"/></p>
-        <p class="big">Email: <input class="email-entry-box" type="text" name="email" value='<?= htmlentities("") ?>' id="em"/></p>
-        <p class="big small-bottom-pad">Headline:</p>
-        <p> <input class="name-box" type="text" name="headline" value='<?= htmlentities("") ?>'id="he" /></p>
+    <p class="big">First Name: <input class="text-box" type="text" name="first_name" value='<?= htmlentities("") ?>' id="fn"/></p>
+        <p class="big">Last Name: <input class="text-box" type="text" name="last_name" value='<?= htmlentities("") ?>' id="ln"/></p>
+        <p class="big">E-mail:</p>
+        <p> <input class="emale-entry-box" type="text" name="email" value='<?= htmlentities("") ?>' id="em"></p>
+        <p class="big">Headline:</p>
+        <p> <input class="headline-box" type="text" name="headline" value='<?= htmlentities("") ?>'id="he" /></p>
         <p class="big small-bottom-pad">Summary: </p>
         <p><textarea rows="3" name="summary" value='<?= htmlentities("") ?>' id="su"></textarea></p>
-        <p>Add Education: <button class="button-plus" id="addEdu" >+</button></p>
+        <p>Add Education: <button class="click-plus" id="addEdu" >+</button></p>
 <?php
         echo '<div id="edu_fields">'."\n";
         echo "</div>";
@@ -99,18 +100,18 @@ $pos = 1;
 <!--Grab some HTML with hot spots and insert in the DOM-->
 <script id="edu-template" type="text">
         <div id="edu@COUNT@">
-            <p>Year: <input class="name-box-small" type="text" name="edu_year@COUNT@" value="" />
-            <input type="button" class="button-plus" value="-" onclick="$('#edu@COUNT@').remove(); return false;"/><p>
-            <p>School: <input type="text" size="80" name="edu_school@COUNT@" class="name-entry-box school" value="" id="school@COUNT@" />
+            <p>Year: <input class="year-entry-box" type="text" name="edu_year@COUNT@" value="" />
+            <input type="button" class="click-plus" value="-" onclick="$('#edu@COUNT@').remove(); return false;"/><p>
+            <p>School: <input class="school ui-autocomplete-custom" type="text" size="80" name="edu_school@COUNT@" value="" id="school@COUNT@" />
             </p>
 </script>
-        <p>Add Position: <button class="button-plus" id="addPos" >+</button></p>
+        <p>Add Position: <button class="click-plus" id="addPos" >+</button></p>
         <div id="position_fields">
         </div>
         </p>
         <p>
-          <input class="button-cancel" type="submit" onclick="return doValidate();" value="Add"/> <input
-          class="button-cancel" type="submit" name="cancel" value="Cancel">
+          <input class="button-submit" type="submit" onclick="return doValidate();" value="Add"/> <input
+          class="button-submit" type="submit" name="cancel" value="Cancel">
         </p>
 </form>
 </div>
@@ -134,8 +135,8 @@ $(document).ready(function() {
                   }
                   window.console && console.log("Adding position "+positionCount);
                   $('#position_fields').append(
-                        '<div id=\"position'+positionCount+'\"><p>Year: <input type="text" name="year'+positionCount+'" size="10" id="yr"/> <input \
-                        type=\"button\" class="button-plus" value="-" onclick="$(\'#position'+positionCount+'\').remove(); return false;"/></p> \
+                        '<div id=\"position'+positionCount+'\"><p>Year: <input class="year-entry-box" type="text" name="year'+positionCount+'" size="10" id="yr"/> <input \
+                        type=\"button\" class="button-small" value="-" onclick="$(\'#position'+positionCount+'\').remove(); return false;"/></p> \
                         <p>Description: </p> \
                         <textarea name=\"desc'+positionCount+'\" rows = "8" cols="80" id="de" ></textarea> \
                   </div>');

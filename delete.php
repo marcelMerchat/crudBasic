@@ -1,9 +1,16 @@
 <?php
 require_once "pdo.php";
+require_once "util.php";
 session_start();
 
 if ( ! isset($_SESSION['name']))  {
       die('ACCESS DENIED');
+}
+
+if(isMobile()==1) {
+   require_once 'mobile.php';
+} else {
+   require_once 'desktop.php';
 }
 
 if ( isset($_POST['delete']) && isset($_POST['profile_id']) ) {
@@ -29,8 +36,7 @@ if ( $row === false ) {
     header( 'Location: index.php' ) ;
     return;
 }
-require_once 'head.php';
-?>
+require_once 'desktop.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +44,8 @@ require_once 'head.php';
     <title>Marcel Merchat - Deleting from Profile Data Table</title>
 </head>
 <body>
-<div id="three">
+<div id="main">
+<br>
 <p class="center big">Confirm: Deleting</p>
 <p class="center">First name:
     <?php
@@ -54,9 +61,9 @@ require_once 'head.php';
 <form method="post">
 <p class="center big">
 <input type="hidden" name="profile_id" value="<?= $row['profile_id'] ?>">
-<input class="button-cancel" type="submit" value="Delete" name="delete">
-<a href="index.php"> Cancel</a>
+<input class="button-submit spacer" type="submit" value="Delete" name="delete">
 </p>
+<h2 class="center spacer"><a href="index.php">Cancel</h2>
 </form>
 </div>
 </body>

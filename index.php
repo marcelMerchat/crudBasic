@@ -1,7 +1,7 @@
 <?php
 require_once "pdo.php";
 require_once "util.php";
-require_once 'detectmobile.php';
+//require_once 'detectMobile.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -9,31 +9,29 @@ session_start();
 <head>
   <title>Marcel Merchat's Resume Registry</title>
   <?php
-      function isMobile() {
-          return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-      }
       if(isMobile()==1) {
           require_once 'mobile.php';
       } else {
-          require_once 'headindex.php';
+          require_once 'desktop.php';
       }
 ?>
 </head>
 <body>
-<div id="two">
+<div id="main">
+<h2>Marcel Merchat's Resume Registry</h2>
 <?php
 // logged-in case
-echo $_SERVER['HTTP_USER_AGENT'];
+//echo $_SERVER['HTTP_USER_AGENT'];
 if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
-    echo('<br>');
-    echo '<h1>Profiles for '.$_SESSION['full_name'].'</h1>';
+    echo '<h2>Profiles for '.$_SESSION['full_name'].'</h2>';
     //echo('<br>');
     flashMessages();
+}
     $stmt1 = $pdo->query("SELECT COUNT(*) FROM Profile");
     $row =  $stmt1->fetch(PDO::FETCH_ASSOC);
     $row_count = array_values($row)[0];
     if($row_count >= 1) {
-        echo('<table border=2>');
+        echo('<table class="quad-space" border=2>');
         echo "<tr><th>";
         echo('Name');
         echo("</th><th>");
@@ -51,37 +49,42 @@ if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
             echo(htmlentities($row['headline']));
             echo("</td>");
             echo("<td>");
-            if ( $_SESSION['user_id'] == $row['user_id'] ) {
-              echo '<a href="edit.php?profile_id='.$row['profile_id'].'"';
-              echo '> Edit</a> / <a';
-              echo ' href="delete.php?profile_id='.$row['profile_id'].'"';
-              echo '> Delete</a>  / <a';
-              echo ' href="view.php?profile_id='.$row['profile_id'].'"';
-              echo '> View</a> ';
-            }
+            if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
+                if ( $_SESSION['user_id'] == $row['user_id'] ) {
+                  echo '<a href="edit.php?profile_id='.$row['profile_id'].'"';
+                  echo '> Edit</a> / <a';
+                  echo ' href="delete.php?profile_id='.$row['profile_id'].'"';
+                  echo '> Delete</a>  / <a';
+                  echo ' href="view.php?profile_id='.$row['profile_id'].'"';
+                  echo '> View</a> ';
+                }
+           }
             echo('</td>');
             echo("</tr>\n");
-      };
+      }
       echo("</table>");
     } else {
           echo ('<p style="color:green">No rows found</p>');
     }
-      echo('<br>');
       echo('<p>');
       //echo('<a href="add.php">Add New Entry</a>');
       echo('</p>');
+if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
       echo('<p class="big">');
       echo '<span>';
           echo '<a class="anchor-button" href="add.php">Add New Entry</a> <a' ;
           echo ' class="anchor-button" href="logout.php">Logout</a>' ;
       echo '</span></p>';
 } else {
-      echo('<br>');
-      echo '<h2>Marcel Merchat\'s Resume Registry</h2>';
-      echo('<br>');
-      echo('<h2>');
-      echo('<a href="login.php">Please log in</a>');
-      echo('</h2>');
+      echo('<h1 class="quad-space">');
+      echo('<a href="login.php">Go to login</a>');
+      echo('</h1>');
+      echo '<p class="big quad-space">In order to view resumes, add new ';
+      echo 'profiles, or make changes to the ';
+      echo 'database, you can log in as ';
+      echo '"guest@mycompany.com" using password "php123" if you don\'t ';
+      echo 'have a password.';
+      echo '</p>';
 }
 ?>
 </div>

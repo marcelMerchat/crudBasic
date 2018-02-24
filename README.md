@@ -10,12 +10,50 @@ USE misc; (Or select misc in phpMyAdmin)
 
 CREATE TABLE users (
    user_id INTEGER NOT NULL
-     AUTO_INCREMENT KEY,
+     AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(128),
    email VARCHAR(128),
    password VARCHAR(128),
    INDEX(email)
 ) ENGINE=InnoDB CHARSET=utf8;
+
+
+ALTER TABLE users ADD INDEX(password);
+
+INSERT INTO users (name,email,password)
+    VALUES ('Elvis','epresley@musicland.edu','1a52e17fa899cf40fb04cfc42e6352f1');
+
+INSERT INTO users (name,email,password)
+        VALUES ('Marilyn','mmonroe@whitehouse.gov','1a52e17fa899cf40fb04cfc42e6352f1');
+
+INSERT INTO users (name,email,password)
+                VALUES ('UMIS','umsi@umich.edu','1a52e17fa899cf40fb04cfc42e6352f1');
+
+CREATE TABLE Profile (
+       profile_id INTEGER NOT NULL AUTO_INCREMENT,
+       user_id INTEGER NOT NULL,
+       first_name Text,
+       last_name Text,
+       email Text,
+       headline Text,
+       summary Text,
+
+       PRIMARY KEY(profile_id),
+
+       CONSTRAINT profile_ibfk_2
+       FOREIGN KEY (user_id) REFERENCES users(user_id)
+       ON DELETE CASCADE ON UPDATE CASCADE
+       ) ENGINE=InnoDB CHARSET=utf8;
+
+INSERT INTO Profile (user_id, first_name, last_name, email, headline, summary)
+    VALUES (1, 'Elvis', 'Presley', 'epresley@musicland.com', 'great singer', 'Changed America') ;
+
+INSERT INTO Profile (user_id, first_name, last_name, email, headline, summary)
+            VALUES (1, 'Marilyn', 'Monroe', 'mmonroe@hollyland.com', 'great actress', 'America Icon, Changed the world.') ;
+
+INSERT INTO Profiles (user_id, first_name, last_name, email, headline, summary)
+                            VALUES (3, 'U', 'MSI', 'umsi@umich.edu', 'great coach', 'Inspiration to students') ;
+
 
 CREATE TABLE Position (
 position_id INTEGER NOT NULL AUTO_INCREMENT,
@@ -31,11 +69,15 @@ REFERENCES Profile (profile_id)
 ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+
 CREATE TABLE Institution (
 institution_id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(255),
 UNIQUE(name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 Many-to-Many table:
@@ -60,75 +102,8 @@ PRIMARY KEY(profile_id, institution_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-$(document).ready(function() {
-// http://stackoverflow.com/questions/17650776/add-remove-html-inside-div-using-javascript
-//<!--onclick="$(\'#position'+counter+'\').remove(); return false;-->
-    window.console && console.log('Document ready called');
+SQL Command Library:
+UPDATE users SET password = 'eaa52980acd0bcfd0937ee5110c74817' WHERE user_id=1;
+UPDATE users SET password = 'dc5317823d0034b07f17f19182523c76' WHERE user_id=2;
 
-    var temp = "<?php echo $pos      ?>";
-    $(document).ready(function() {
-
-      window.console && console.log('Document ready called');
-      countPos = 9;
-      countphp = 1;
-      var temp = "<?php echo $pos  ?>";
-
-
-          window.console && console.log('Document ready called');
-          var positionCount = Number("<?php echo $pos      ?>");
-          var countEdu =      Number("<?php echo $countEdu ?>");
-          $('#addPos').click(function(event){
-                  event.preventDefault();
-                  if( positionCount > 9){
-                      alert('Maximum of nine position entries exceeded');
-                      return;
-                  }
-                  window.console && console.log("Adding position "+positionCount);
-                  $('#position_fields').append(
-                        '<div id=\"position'+positionCount+'\"><p>Year: <input type="text" name="year'+positionCount+'" size="10" id="yr"/> <input \
-                        type=\"button\" value="-" onclick="$(\'#position'+positionCount+'\').remove(); return false;"/></p> \
-                        <p>Description: </p> \
-                        <textarea name=\"desc'+positionCount+'\" rows = "8" cols="80" id="de" ></textarea> \
-                  </div>');
-                  positionCount++;
-          });
-          $('#addEdu').click(function(event) {
-              event.preventDefault();
-              if(countEdu >= 9){
-                    alert('Maximum of nine education entries exceeded');
-                    return;
-              }
-              //countEdu = 1;
-              window.console && console.log("Adding education "+countEdu);
-              var source = $('#edu-template').html();
-              window.console && console.log("Adding education2");
-              $('#edu_fields').append(source.replace(/@COUNT@/g, countEdu));
-              countEdu++;
-              // auto-completion handler for new additions
-             window.console && console.log("Adding education3");
-                      //getData =  function(request, response) {
-                      //var term1 = decodeURIComponent(temp);
-              var y = "school.php";
-              $(document).on('click', '.school', 'input[type="text"]', function(){
-                      eyedee = $(this).attr("id");
-                      term = document.getElementById(id=eyedee).value;
-                      $.getJSON('school.php?ter'+'m='+term, function(data) {
-                      //var y = data.Result;
-                           var y =data;
-                           $('.school').autocomplete({ source: y });
-                      });
-              });
-          });  //end of addedu
-          $(document).on('click', '.school', 'input[type="text"]', function(){
-              eyedee = $(this).attr("id");
-              term = document.getElementById(id=eyedee).value;
-              $.getJSON('school.php?ter'+'m='+term, function(data) {
-                   var y = data.Result;
-                   var y =data;
-                   $('.school').autocomplete({ source: y });
-                          });
-          });
-    });
-                    //$.getJSON('http://localhost/js/json/proj/school.php', function(data) {
-                              //var source = data.Result;
-});
+ALTER TABLE Profiles RENAME TO Profile;

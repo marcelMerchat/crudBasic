@@ -1,10 +1,7 @@
 <?php
 session_start();
 require_once 'pdo.php';
-require_once "bootstrap.php";
 require_once "util.php";
-require_once 'headindex.php';
-require_once 'detectmobile.php';
 
 if ( isset($_POST['cancel'] ) ) {
     header('Location: index.php');
@@ -69,16 +66,20 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
 <html>
 <head>
   <?php
-      require_once 'head.php';
+  if(isMobile()==1) {
+      require_once 'mobile.php';
+  } else {
+      require_once 'desktop.php';
+  }
   ?>
   <title>Marcel Merchat's Login Page</title>
 </head>
 <body>
 </div>
-<div id="two">
+<div id="main">
 <form method="POST" action="login.php">
     <br>
-    <h1>Please Log In</h1>
+    <h2>Please Log In</h2>
     <p>
       <?php
         flashMessages();
@@ -93,11 +94,11 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
       <input class="password"  type="password" name="pass" value='<?= htmlentities("") ?>' id="id_1723">
       </p>
       <p class="big">
-            <input class="big width-eight" type="submit" onclick="return doValidate();" value="Log In">
-            <input class="button-cancel" type="submit" name="cancel" value="Cancel">
+            <input class="button-submit" type="submit" onclick="return doValidate();" value="Log In">
+            <input class="button-submit" type="submit" name="cancel" value="Cancel">
       </p>
   </form>
-      <p> For a password hint, view source and find an account and password hint
+      <p class="big"> For a password hint, view source and find an account and password hint
                          in the HTML comments.
       <!-- Hint:
       Three accounts are:

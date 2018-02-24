@@ -2,7 +2,7 @@
 // 'view.php'
 require_once "pdo.php";
 require_once "util.php";
-
+//require_once 'detectMobile.php';
 session_start();
 ?>
 
@@ -11,11 +11,19 @@ session_start();
 <head>
     <title>Marcel Merchat's Resume Registry</title>
     <?php
-      require_once 'head.php';
+      //require_once 'head.php';
+      //function isMobile() {
+      //    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+      //}
+      if(isMobile()==1) {
+          require_once 'mobile.php';
+      } else {
+          require_once 'desktop.php';
+      }
     ?>
 </head>
 <body>
-<div id="smalltable">
+<div id="main">
 <h1>Profile Information</h1>
 <br>
 <?php
@@ -24,13 +32,13 @@ session_start();
                   email, headline, summary FROM Profile WHERE profile_id = :pid');
     $stmt->execute(array(':pid' => $_GET['profile_id']));
     $row =  $stmt->fetch(PDO::FETCH_ASSOC);
-        echo '<p>First Name: '.htmlentities($row['first_name']).'</p>';
-        echo '<p>Last Name: '.htmlentities($row['last_name']).'</p>';
-        echo '<p>Email: '.htmlentities($row['email']).'</p>'.'</p>';
-        echo '<p>Headline: '.htmlentities($row['headline']).'</p>';
-        echo '<p>Summary: '.htmlentities($row['summary']).'</p>';
+        echo '<p class="big">First Name: '.htmlentities($row['first_name']).'</p>';
+        echo '<p class="big">Last Name: '.htmlentities($row['last_name']).'</p>';
+        echo '<p class="big">Email: '.htmlentities($row['email']).'</p>'.'</p>';
+        echo '<p class="big">Headline: '.htmlentities($row['headline']).'</p>';
+        echo '<p class="big">Summary: '.htmlentities($row['summary']).'</p>';
 
-        echo '<h2> Education: </h2>';
+        echo '<h2 class="margin-bottom-small"> Education: </h2>';
         $sqlid = 'SELECT institution_id, year FROM Education WHERE profile_id = :pid';
         $sqlinst = 'SELECT name FROM Institution WHERE institution_id = :iid';
         $stmt_schoolid = $pdo->prepare($sqlid);
@@ -52,7 +60,7 @@ echo '</ul>';
         } else {
               echo '<p style="color:orange">No education found</p>';
         }
-  echo '<h2> Positions: </h2>';
+  echo '<h2  class="margin-bottom-small"> Positions: </h2>';
   $sql = 'SELECT year, description FROM Position WHERE profile_id = :pid';
   $stmt_positions = $pdo->prepare($sql);
   $stmt_positions->execute(array(':pid' => $_GET['profile_id']));
@@ -72,8 +80,8 @@ echo '</ul>';
              echo '<p style="color:orange">No positions found</p>';
   }
 ?>
-<p class="big">
-    <a href="index.php">Done</a>
-</p>
+<h3 class="big">
+    <a href="index.php">Return to Main Page</a>
+</h3>
 </div>
 </body>
