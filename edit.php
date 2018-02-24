@@ -2,7 +2,6 @@
 // 'edit.php'
 require_once "pdo.php";
 require_once "util.php";
-//require_once 'detectMobile.php';
 session_start();
 
 // If the user is not logged-in
@@ -112,8 +111,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) &&
    if(isMobile()==1) {
       require_once 'mobile.php';
    } else {
-     // Custom styles for this template
-     echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
+      echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
    }
 ?>
 <script src="script.js"></script>

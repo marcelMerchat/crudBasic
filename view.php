@@ -2,7 +2,6 @@
 // 'view.php'
 require_once "pdo.php";
 require_once "util.php";
-//require_once 'detectMobile.php';
 session_start();
 ?>
 
@@ -11,14 +10,11 @@ session_start();
 <head>
     <title>Marcel Merchat's Resume Registry</title>
     <?php
-      //require_once 'head.php';
-      //function isMobile() {
-      //    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-      //}
       if(isMobile()==1) {
           require_once 'mobile.php';
       } else {
-          require_once 'desktop.php';
+          //require_once 'desktop.php';
+          echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
       }
     ?>
 </head>

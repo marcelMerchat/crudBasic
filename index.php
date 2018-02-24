@@ -1,7 +1,6 @@
 <?php
 require_once "pdo.php";
 require_once "util.php";
-//require_once 'detectMobile.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ session_start();
       if(isMobile()==1) {
           require_once 'mobile.php';
       } else {
-          require_once 'desktop.php';
+          echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
       }
 ?>
 </head>

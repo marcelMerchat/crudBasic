@@ -59,15 +59,11 @@ $pos = 1;
 <head>
 <title>Marcel Merchat's Profile Entry</title>
 <?php
-    //function isMobile() {
-    //    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-    //}
     require_once 'jquery.php';
     if(isMobile()==1) {
         require_once 'mobile.php';
     } else {
-      // Custom styles for this template
-      echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
+        echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
     }
 ?>
 <script src="script.js"></script>

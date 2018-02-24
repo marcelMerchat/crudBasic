@@ -69,7 +69,7 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
   if(isMobile()==1) {
       require_once 'mobile.php';
   } else {
-      require_once 'desktop.php';
+      echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
   }
   ?>
   <title>Marcel Merchat's Login Page</title>

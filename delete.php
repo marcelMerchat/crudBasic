@@ -10,7 +10,8 @@ if ( ! isset($_SESSION['name']))  {
 if(isMobile()==1) {
    require_once 'mobile.php';
 } else {
-   require_once 'desktop.php';
+   //require_once 'desktop.php';
+   echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
 }
 
 if ( isset($_POST['delete']) && isset($_POST['profile_id']) ) {
@@ -36,7 +37,7 @@ if ( $row === false ) {
     header( 'Location: index.php' ) ;
     return;
 }
-require_once 'desktop.php';
+
 ?>
 <!DOCTYPE html>
 <html>
