@@ -75,7 +75,7 @@ if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
           echo ' class="anchor-button" href="logout.php">Logout</a>' ;
       echo '</span></p>';
 } else {
-      echo('<h1 class="quad-space">');
+      echo('<h1 class="double-space">');
       echo('<a href="login.php">Go to login</a>');
       echo('</h1>');
       echo '<p class="big quad-space">In order to view resumes, add new ';

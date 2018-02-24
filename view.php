@@ -10,17 +10,16 @@ session_start();
 <head>
     <title>Marcel Merchat's Resume Registry</title>
     <?php
-      if(isMobile()==1) {
+      if(isMobile()!==1) {
           require_once 'mobile.php';
       } else {
-          //require_once 'desktop.php';
           echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
       }
     ?>
 </head>
 <body>
 <div id="main">
-<h1>Profile Information</h1>
+<h2>Profile Information</h2>
 <br>
 <?php
     $profileid = $_GET['profile_id'];
@@ -76,7 +75,8 @@ echo '</ul>';
              echo '<p style="color:orange">No positions found</p>';
   }
 ?>
-<h3 class="big">
+<br>
+<h3 class="class="quad-space">
     <a href="index.php">Return to Main Page</a>
 </h3>
 </div>

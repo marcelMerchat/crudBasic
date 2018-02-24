@@ -29,6 +29,9 @@ INSERT INTO users (name,email,password)
 INSERT INTO users (name,email,password)
                 VALUES ('UMIS','umsi@umich.edu','1a52e17fa899cf40fb04cfc42e6352f1');
 
+INSERT INTO users (name,email,password)
+                VALUES ('guest','guest@mycompany.com','1a52e17fa899cf40fb04cfc42e6352f1');
+
 CREATE TABLE Profile (
        profile_id INTEGER NOT NULL AUTO_INCREMENT,
        user_id INTEGER NOT NULL,

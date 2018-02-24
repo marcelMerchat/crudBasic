@@ -45,8 +45,6 @@ p {
     padding-bottom: 0px;
     padding-left: 1px;
     padding-right: 1px;
-    margin-top: 1px;
-    margin-bottom: 1px;
     border: 0;
 }
 a {
@@ -72,8 +70,6 @@ input {
     padding-bottom: 1px;
     padding-left: 3px;
     padding-right: 3px;
-    margin-top: 1px;
-    margin-bottom: 1px;
     margin-left: 5px;
     margin-right: 5px;
     background-color: #eff;
@@ -96,7 +92,6 @@ textarea {
     padding-bottom: 8px;
     border: 1px solid #008800;
     background-color: #eef;
-    margin-top: 1px;
 }
 /* unvisited link */
 a:link {
@@ -381,25 +376,31 @@ a:hover {
 }
 .email {
     font-size: 1.1em;
-    width: 350px;
+    width: 325px;
     padding-left: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 2px;
     border: 1px solid #008800;
     background-color: #def;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.margin-bottom-small {
+    margin-top: 24px;
+    margin-bottom: 16px;
 }
 .password {
     font-size: 1.1em;
-    width: 300px;
+    width: 295px;
     padding-left: 2px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 2px;
-    border: 1px solid #008800;
+    border: 1x solid #008800;
     background-color: #def;
-    margin-top: 12px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 .small-word-button {
     font-size: 1.1em;

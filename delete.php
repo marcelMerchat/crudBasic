@@ -48,6 +48,8 @@ if ( $row === false ) {
 <div id="main">
 <br>
 <p class="center big">Confirm: Deleting</p>
+<br>
+<br>
 <p class="center">First name:
     <?php
         echo(htmlentities($row['first_name']));
@@ -64,6 +66,8 @@ if ( $row === false ) {
 <input type="hidden" name="profile_id" value="<?= $row['profile_id'] ?>">
 <input class="button-submit spacer" type="submit" value="Delete" name="delete">
 </p>
+<br>
+<br>
 <h2 class="center spacer"><a href="index.php">Cancel</h2>
 </form>
 </div>

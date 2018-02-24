@@ -78,7 +78,6 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
 </div>
 <div id="main">
 <form method="POST" action="login.php">
-    <br>
     <h2>Please Log In</h2>
     <p>
       <?php
@@ -93,7 +92,7 @@ if (   isset($_POST['email'])  && isset($_POST['pass'])) {
       <label for="id_1723">Password</label>
       <input class="password"  type="password" name="pass" value='<?= htmlentities("") ?>' id="id_1723">
       </p>
-      <p class="big">
+      <p class="big double-space">
             <input class="button-submit" type="submit" onclick="return doValidate();" value="Log In">
             <input class="button-submit" type="submit" name="cancel" value="Cancel">
       </p>
