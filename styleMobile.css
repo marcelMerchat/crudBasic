@@ -1,7 +1,7 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
-    background-color: #e4e4e3;
+    background-color: #FDF0D0;
 }
 div {
     position: relative;
@@ -398,6 +398,7 @@ a:hover {
     margin-top: 20px;
 }
 #top_left {
+    display: none;
     width: 28%;
     top: 3%;
     left: 3%;
@@ -414,6 +415,7 @@ a:hover {
   padding-bottom: 2px;
 }
 #top_right {
+    display: none;
     width: 28%;
     top: 3%;
     right: 3%;

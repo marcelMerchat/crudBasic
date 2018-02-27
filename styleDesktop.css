@@ -1,17 +1,12 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
-    background-color: #e4e4e3;
+    background-color: #FDF0D0;
 }
 div {
     position: relative;
+    /*position: absolute;*/
     box-sizing: border-box;
-}
-.div {
-    display: block;
-    font-weight: bold;
-    position: absolute;
-    border: 10px;
 }
 h1 {
     color: #008800;
@@ -25,7 +20,8 @@ h1 {
 h2 {
     color: #008800;
     font-size: 1.4em;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-top: 1px;
     padding-bottom: 1px;
     padding-left: 2px;
@@ -127,20 +123,28 @@ a:hover {
     margin-bottom: 3px;
     border: 1px;
 }
-.p_center {
-    text-align: center;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
 .small-bottom-pad {
     padding-bottom: 1px;
     margin-bottom: 1px
 }
+.big {
+    font-size: 1.2em;
+}
 .center {
     text-align: center;
 }
-.big {
-    font-size: 1.2em;
+.clock {
+    color: #008800;
+    font-size: 1.5em;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: bold;
+    background-color: #ffe;
+    border: 3px solid #008800;
 }
 .message {
     font-size: 1.2em;
@@ -176,18 +180,16 @@ a:hover {
     background-color: #def;
     margin-top: 10px;
 }
-.anchor-button {
+a.anchor-button {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
     border: 2px solid #008800;
-    background-color: #eff;
+    background-color: #FDFDFD;
     margin-top: 0.4rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    color: 333;
-    text-decoration: none;
 }
 .width-eight {
     width: 8rem;
@@ -414,9 +416,14 @@ a:hover {
     margin-top: 15px;
 }
 #top_left {
-    width: 28%;
-    top: 3%;
-    left: 3%;
+    position: absolute;
+    width: 15%;
+    top: 2%;
+    left: 2%;
+    color: #080;
+    background-color: #ffe;
+    border: 2px #080 solid;
+    padding: 6px
 }
 #one {
   top: 5%;
@@ -430,19 +437,13 @@ a:hover {
   padding-bottom: 2px;
 }
 #top_right {
-    width: 28%;
-    top: 3%;
-    right: 3%;
-}
-#main {
-    top: 20%;
-    left: 25%;
-    width: 50%;
-    border: 0px orange solid;
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    position: absolute;
+    width: 15%;
+    top: 2%;
+    right: 2%;
+    background-color: #ffe;
+    border: 2px #080 solid;
+    padding: 6px
 }
 #login_fails {
     top: 52%;
@@ -584,18 +585,69 @@ a:hover {
     margin: auto;
     display: block;
 }
-#pre-existing-conditions {
-
+#main {
+    /*display: flex;
+    flex-direction: column;*/
+    top: 0%;
+    left: 25%;
+    width: 50%;
+    border: 0px orange solid;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#a {
+    top: 0%;
+    left: 12%;
+    width: 76%;
+    border: 0px orange solid;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+/*#a {order: 1}
+#map {order: 2}*/
+#map {
+          /*position: relative;
+          position: absolute;
+          top: 35%;*/
+          left: 20%;
+          height: 400px;
+          width: 60%;
+          max-width: none;
+          padding: 0px;
+          border: 2px solid #008800;
+}
+#map img {
+   max-width: none;
+}
+#map_canvas img {
+   max-width: none;
+   max-height: none;
+   left: 20%;
+   height: 50%;
+   width: 70%;
+   padding: 0px;
+   border: 5px solid blue;
+}
+.map_canvas {
+   max-width: none;
+}
+.gmnoprint img {
+    max-width: none;
 }
 table {
       border-collapse: collapse;
+      width: 100%;
       cell-spacing: 0px;
       padding-left: 8px;
       padding-right 8px;
       padding-top: 3px;
       padding-bottom: 3px;
       margin: 1px;
-      border: 2px solid #008800;
+      border: 2px solid #004400;
       background-color: #CCEEFF;
 }
 .tablePosition {
@@ -616,10 +668,10 @@ th {
     padding-right: 8px;
     padding-top: 3px;
     padding-bottom: 3px;
-    background-color: #BBDDEE;
+    background-color: #BBDDAA;
     border-spacing: 0px;
     cell-spacing: 0px;
-    border: 2px solid #008800;
+    border: 1px solid #004400;
 }
 td {
     font-size: 1.2em;
@@ -628,7 +680,7 @@ td {
     padding-top: 3px;
     padding-bottom: 3px;
     cell-spacing: 0px;
-    border: 1px solid #008800;
+    border: 1px solid #004400;
     border-spacing: 0px;
     background-color: #EEEEFF;
 }

@@ -8,7 +8,7 @@ session_start();
 <head>
   <title>Marcel Merchat's Resume Registry</title>
   <?php
-      if(isMobile()==1) {
+      if(isMobile()!==1) {
           require_once 'mobile.php';
       } else {
           echo '<link rel="stylesheet" type="text/css" href="styleDesktop.css">';
@@ -16,13 +16,21 @@ session_start();
 ?>
 </head>
 <body>
+<div id="top_left">
+  All you need in this life is ignorance and confidence,
+  and then success is sure. - Mark Twain
+</div>
+<div id="top_right">
+  Great minds discuss ideas; average minds discuss events;
+  small minds discuss people. - Eleanor Roosevelt
+</div>
 <div id="main">
-<h2>Marcel Merchat's Resume Registry</h2>
+<h2 class="center">Marcel Merchat's Resume Registry</h2>
 <?php
 // logged-in case
 //echo $_SERVER['HTTP_USER_AGENT'];
 if ( isset($_SESSION['user_id']) && (strlen($_SESSION['user_id']) > 0) ) {
-    echo '<h2>Profiles for '.$_SESSION['full_name'].'</h2>';
+    echo '<h2 class="center">Profiles for '.$_SESSION['full_name'].'</h2>';
     //echo('<br>');
     flashMessages();
 }
